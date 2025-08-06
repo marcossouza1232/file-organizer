@@ -2,6 +2,21 @@
 from sys import argv
 from os import scandir, mkdir, rename
 
+def check_overwrite(directory, file_type, f):
+    try:
+        a = open(directory + "/" + file_type + "/" + f, 'r')
+    except FileNotFoundError:
+        return True
+    return False
+
+def move_file(directory,file_type,f):
+    overwrite = check_overwrite(directory, file_type,f)
+    if overwrite:
+        rename(directory + "/" + f, directory + "/" + file_type + "/" + f)
+    else:
+        print("{0} already exists - not overwriting.".format(f))
+#main
+
 if len(argv) != 2:
     directory = input("Enter the name of the directory to organize: ")
 else:
@@ -30,12 +45,12 @@ for f in files:
     for file_type in extensions:
         for extension in extensions[file_type]:
             if f.endswith(extension):
-                rename(directory + "/" + f, directory + "/" + file_type + "/" + f)
+                move_file(directory, file_type,f)
                 achou = True
                 break
         if achou:
             break
     if not achou:
-        rename(directory + "/" + f,directory + "/" + "others" + "/" + f)
+        move_file(directory, "others", f)
 
 print("The directory has been successfuly organized")
