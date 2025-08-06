@@ -38,4 +38,22 @@ echo -e "\n📂 After second organization:"
 ls -R "$TEST_DIR"
 
 # Step 10
+# This step is testing what happens if we create duplicate files with the same names 
+# in the original test directory and run the organizer again. The goal is to check whether the script 
+# overwrites existing files or handles duplicates safely.
+echo -e "\n🧪 Testing duplicate file handling (overwriting prevention)..."
+
+# Creating the same set of files again in the test directory
+echo "📄 Creating duplicate files in $TEST_DIR..."
+touch "$TEST_DIR"/example.{py,sh,c,txt,pdf,docx,jpg,jpeg,png,mp3,wav,ogg,flac,aac,m4a,mp4,mkv,avi,webm,mov,wmv}
+
+# Running the file organizer again to check behavior
+echo "🚀 Running fileorganizer.py again to see how duplicates are handled..."
+python3 "$TEST_DIR"/fileorganizer.py "$TEST_DIR"
+
+# Showing the directory structure after the duplicate test
+echo -e "\n📂 Directory structure after duplicate file test:"
+ls -R "$TEST_DIR"
+
+# Step 11
 rm -rf "$TEST_DIR"
