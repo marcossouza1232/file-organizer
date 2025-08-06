@@ -51,12 +51,21 @@ downloads/
 
 
 ### **After running the script:**  
+
 downloads/
+
 ├── docs/
+
 │ └── report.pdf
+
 ├── images/
+
 │ └── photo.jpg
+
 ├── scripts/
+
 │ └── script.py
+
 ├── others/
+
 │ └── archive.zip
