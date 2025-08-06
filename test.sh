@@ -20,5 +20,22 @@ python3 fileorganizer.py "$TEST_DIR"
 echo -e "\n📂 After organization:"
 ls -R "$TEST_DIR"
 
-# Step 6: Remove the test directory
+# Step 6: Move fileorganizer.py back to the test directory and remove the previous copy in scripts
+echo "🔄 Moving fileorganizer.py back to $TEST_DIR and removing old copy from scripts..."
+cp -r fileorganizer.py "$TEST_DIR"/
+rm -rf "$TEST_DIR"/scripts/fileorganizer.py
+
+# Step 7: Show directory structure after restoring the script
+echo -e "\n📂 Directory after restoring fileorganizer.py:"
+ls -R "$TEST_DIR"
+
+# Step 8: Run the file organizer script again from inside the test directory
+echo -e "\n🚀 Running fileorganizer.py (second run)..."
+python3 "$TEST_DIR"/fileorganizer.py "$TEST_DIR"
+
+# Step 9: Show final organized directory structure
+echo -e "\n📂 After second organization:"
+ls -R "$TEST_DIR"
+
+# Step 10
 rm -rf "$TEST_DIR"
