@@ -5,15 +5,15 @@ This README and the bash script were written with the help of ChatGPT. However, 
 
 This Python script organizes files in a given directory by sorting them into categorized folders:
 
-    Documents/ → .pdf, .docx, .txt, etc.
+    docs/ → .pdf, .docx, .txt
 
-    Images/ → .jpg, .png, .jpeg, etc.
+    images/ → .jpg, .png, .jpeg
 
-    Scripts/ → .py, .sh, .c, etc.
+    scripts/ → .py, .sh, .c
 
-    Others/ → Any unrecognized file types
+    others/ → Any unrecognized file types
 
-It ignores the script itself during the organization process (even after being moved outside and re-run).
+The script ignores itself during the organization process (even after being moved outside and re-run).
 ✅ Current Improvements
 
 The following issues have been fixed compared to the previous version:
@@ -26,23 +26,14 @@ The logic has been simplified by using a direct mapping of extensions to categor
 
 ✔ Improved Output and Logging
 The script now provides clear feedback during execution.
-⚠️ New Known Issue
 
-File Overwrite on Duplicate Names
-If two or more files share the same name (even if they have different paths originally), moving them into the same category folder will overwrite the previous file without warning.
-✅ To Do
-
-    Implement a safe move mechanism (e.g., renaming duplicates instead of overwriting).
-
-    Add a dry-run mode to preview changes before applying.
-
-    Optionally support recursive directory organization.
+✔ No File Overwriting on Duplicate Names
+If a file with the same name already exists in the target folder, the script will not overwrite it. Instead, the file is left in its original location, ensuring no data loss.
 
 🧪 Example
-
 Before
 
-Downloads/
+downloads/
 ├── report.pdf
 ├── photo.jpg
 ├── script.py
@@ -50,12 +41,12 @@ Downloads/
 
 After running the script:
 
-Downloads/
-├── Documents/
+downloads/
+├── docs/
 │   └── report.pdf
-├── Images/
+├── images/
 │   └── photo.jpg
-├── Scripts/
+├── scripts/
 │   └── script.py
-├── Others/
+├── others/
 │   └── archive.zip
